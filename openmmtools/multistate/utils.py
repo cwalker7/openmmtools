@@ -278,6 +278,6 @@ def subsample_data_along_axis(data, subsample_rate, axis):
     cast_data = np.asarray(data)
     data_shape = cast_data.shape
     # Since we already have g, we can just pass any appropriate shape to the subsample function
-    indices = timeseries.subsampleCorrelatedData(np.zeros(data_shape[axis]), g=subsample_rate)
+    indices = timeseries.subsample_correlated_data(np.zeros(data_shape[axis]), g=subsample_rate)
     subsampled_data = np.take(cast_data, indices, axis=axis)
     return subsampled_data

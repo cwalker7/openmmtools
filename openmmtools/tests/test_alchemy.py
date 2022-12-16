@@ -1153,13 +1153,13 @@ def overlap_check(reference_system, alchemical_system, positions, nsteps=50, nsa
 
     # Discard data to equilibration and subsample.
     du_n = np.array(data['du_n'])
-    from pymbar import timeseries, EXP
-    t0, g, Neff = timeseries.detectEquilibration(du_n)
-    indices = timeseries.subsampleCorrelatedData(du_n, g=g)
+    from pymbar import timeseries, exp
+    t0, g, Neff = timeseries.detect_equilibration(du_n)
+    indices = timeseries.subsample_correlated_data(du_n, g=g)
     du_n = du_n[indices]
 
     # Compute statistics.
-    DeltaF, dDeltaF = EXP(du_n)
+    DeltaF, dDeltaF = exp(du_n)
 
     # Raise an exception if the error is larger than 3kT.
     MAX_DEVIATION = 3.0  # kT
